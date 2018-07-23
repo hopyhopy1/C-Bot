@@ -1,18 +1,30 @@
 {
-  "name": "c-bot",
-  "version": "1.0.0",
-  "description": "a C Development Studios Bot!",
+  "name": "c1-bot",
+  "version": "0.3.0",
+  "description": "A Discord bot!",
+  "engines": {
+    "node": "8.9.1"
+  },
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js",
   },
-  "author": "CatLover3319",
-  "license": "ISC",
   "dependencies": {
-    "discord.js": "^11.3.2",
-    "mysql": "^2.16.0",
-    "nodemon": "^1.18.3",
-    "pg": "^7.4.3",
-    "roblox-js": "^4.0.2"
-  }
+    "ejs": "^2.5.6",
+    "express": "^4.15.2"
+  },
+  "devDependencies": {
+    "request": "^2.81.0",
+    "tape": "^4.7.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hopyhopy1/C-Bot"
+  },
+  "keywords": [
+    "node",
+    "heroku",
+    "express"
+  ],
+  "license": "MIT"
 }

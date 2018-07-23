@@ -1,0 +1,18 @@
+{
+  "name": "c-bot",
+  "version": "1.0.0",
+  "description": "a C Development Studios Bot!",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "CatLover3319",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^11.3.2",
+    "mysql": "^2.16.0",
+    "nodemon": "^1.18.3",
+    "pg": "^7.4.3",
+    "roblox-js": "^4.0.2"
+  }
+}

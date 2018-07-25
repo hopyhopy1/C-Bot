@@ -42,24 +42,22 @@ client.on('message', (message) => {
 		if(operator == 'add' or operator == 'remove' or operator == 'set'){
 		if(name) {
 		
-			const query = {
- 			 text: 'SELECT * FROM points',
-  			values: ['brian', '@brian', 'guest', 100],
-			}
+			const { DBClient } = require('pg');
 
-			// callback
-			DBclient.query(query, (err, res) => {
-			  if (err) {
- 			   console.log(err.stack)
- 			 } else {
- 			   console.log(res.rows[0])
- 			 }
-			})
+			const DBclient = new Client({
+			  connectionString: process.env.DATABASE_URL,
+ 			 ssl: true,
+			});
 
-			// promise
-			DBclient.query(query)
-  			.then(res => console.log(res.rows[0]))
-  			.catch(e => console.error(e.stack))
+			DBclient.connect();
+
+			DBclient.query('SELECT * FROM table_name;', (err, res) => {
+			  if (err) throw err;
+			  for (let row of res.rows) {
+			    console.log(JSON.stringify(row));
+			  }
+			  DBclient.end();
+			});
 		
 		}
 		} else {

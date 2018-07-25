@@ -50,7 +50,7 @@ client.on('message', (message) => {
 
 			DBclient.connect();
 
-			DBclient.query('SELECT * FROM table_name;', (err, res) => {
+			DBclient.query('INSERT INTO points; VALUES ('george', '@george', 'guest', 0);'), (err, res) => {
 			  if (err) throw err;
 			  for (let row of res.rows) {
 			    console.log(JSON.stringify(row));

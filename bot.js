@@ -2,6 +2,7 @@ var discord = require('discord.js');
 var client = new discord.Client();
 var token = process.env.BOT_TOKEN
 var prefix = process.env.PREFIX
+const { Pool, DBClient } = require('pg')
 client.login(token)
 
 client.on("ready", () => {
@@ -31,7 +32,32 @@ client.on('message', (message) => {
 	if (message.author.bot) return; // Dont answer yourself.
     var args = message.content.split(/[ ]+/)
     
-    if(isCommand('Ping', message)){
-    	message.reply('Pong');
+    if(isCommand('Online', message)){
+    	message.reply('Affirmative');
     }
+	
+	if (isCommand('Points', message)){
+		var operator = args[1]
+		var name = args[2]
+		if(operator == 'add' or operator == 'remove' or operator == 'set'){
+		if(name) {
+		
+			DBclient.query('SELECT NOW() as now', (err, res) => {
+ 			 if (err) {
+ 			   console.log(err.stack)
+ 			 } else {
+			    console.log(res.rows[0])
+			  }
+			})
+
+			// promise
+			DBclient.query('SELECT NOW() as now')
+			 .then(res => console.log(res.rows[0]))
+			  .catch(e => console.error(e.stack))
+		
+		}
+		} else {
+		message.reply('try: -Points <add, remove, set> <Player name or Discord tag>')
+		}
+	}
 });

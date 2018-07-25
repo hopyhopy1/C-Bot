@@ -1,7 +1,7 @@
 var discord = require('discord.js');
 var client = new discord.Client();
 var token = process.env.BOT_TOKEN
-var prefix = proccess.env.PREFIX
+var prefix = process.env.PREFIX
 client.login(token)
 
 client.on("ready", () => {

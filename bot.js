@@ -2,7 +2,6 @@ var discord = require('discord.js');
 var client = new discord.Client();
 var token = process.env.BOT_TOKEN
 var prefix = process.env.PREFIX
-const { Pool, DBClient } = require('pg')
 client.login(token)
 
 client.on("ready", () => {

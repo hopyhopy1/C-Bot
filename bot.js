@@ -56,7 +56,7 @@ client.on('message', (message) => {
 			    console.log(JSON.stringify(row));
 			  }
 			  DBclient.end();
-			});
+			};
 		
 		}
 		} else {

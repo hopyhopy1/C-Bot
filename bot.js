@@ -1,21 +1,22 @@
 var discord = require('discord.js');
-var client = new discord.Client();
+const { Client } = require('pg');
+var Dclient = new discord.Client();
 var token = process.env.BOT_TOKEN
 var prefix = process.env.PREFIX
-client.login(token)
+Dclient.login(token)
 
-client.on("ready", () => {
-  client.user.setGame(`Making HL3`);
+Dclient.on("ready", () => {
+  Dclient.user.setGame(`Making HL3`);
   console.log(`Ready to serve on ${client.guilds.size} servers, for ${client.users.size} users.`);
 });
 
-client.on('guildMemberAdd', member => {
+Dclient.on('guildMemberAdd', member => {
   let guild = member.guild;
   let user = member.user
   console.log(`${user.tag} joined ${guild}`)
 });
 
-client.on('guildMemberRemove', member => {
+Dclient.on('guildMemberRemove', member => {
   let guild = member.guild;
   let user = member.user
   console.log(`${user.tag} left ${guild}`)
@@ -27,7 +28,7 @@ function isCommand(command, message){
 	return content.startsWith(prefix + command);
 }
 
-client.on('message', (message) => {
+Dclient.on('message', (message) => {
 	if (message.author.bot) return; // Dont answer yourself.
     var args = message.content.split(/[ ]+/)
     
@@ -41,21 +42,21 @@ client.on('message', (message) => {
 		if(operator == 'add' || operator == 'remove' || operator == 'set'){
 		if(name) {
 		
-			const { DBClient } = require('pg');
 
-			const DBclient = new Client({
+
+			const client = new Client({
 			  connectionString: process.env.DATABASE_URL,
  			 ssl: true,
 			});
 
-			DBclient.connect();
+			client.connect();
 
-			DBclient.query("INSERT INTO points; VALUES ('george', '@george', 'guest', 0);"), (err, res) => {
+			client.query("INSERT INTO points; VALUES ('george', '@george', 'guest', 0);"), (err, res) => {
 			  if (err) throw err;
 			  for (let row of res.rows) {
 			    console.log(JSON.stringify(row));
 			  }
-			  DBclient.end();
+			  client.end();
 			};
 		
 		}

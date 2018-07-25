@@ -39,7 +39,7 @@ client.on('message', (message) => {
 	if (isCommand('Points', message)){
 		var operator = args[1]
 		var name = args[2]
-		if(operator == 'add' or operator == 'remove' or operator == 'set'){
+		if(operator == 'add' || operator == 'remove' || operator == 'set'){
 		if(name) {
 		
 			const { DBClient } = require('pg');

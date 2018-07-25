@@ -42,18 +42,24 @@ client.on('message', (message) => {
 		if(operator == 'add' or operator == 'remove' or operator == 'set'){
 		if(name) {
 		
-			DBclient.query('SELECT NOW() as now', (err, res) => {
- 			 if (err) {
+			const query = {
+ 			 text: 'SELECT * FROM points',
+  			values: ['brian', '@brian', 'guest', 100],
+			}
+
+			// callback
+			DBclient.query(query, (err, res) => {
+			  if (err) {
  			   console.log(err.stack)
  			 } else {
-			    console.log(res.rows[0])
-			  }
+ 			   console.log(res.rows[0])
+ 			 }
 			})
 
 			// promise
-			DBclient.query('SELECT NOW() as now')
-			 .then(res => console.log(res.rows[0]))
-			  .catch(e => console.error(e.stack))
+			DBclient.query(query)
+  			.then(res => console.log(res.rows[0]))
+  			.catch(e => console.error(e.stack))
 		
 		}
 		} else {

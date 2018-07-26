@@ -28,6 +28,10 @@ function isCommand(command, message){
 	return content.startsWith(prefix + command);
 }
 
+function InNum(string){
+	return !isNaN(string)
+}
+
 Dclient.on('message', (message) => {
 	if (message.author.bot) return; // Dont answer yourself.
     var args = message.content.split(/[ ]+/)
@@ -39,19 +43,20 @@ Dclient.on('message', (message) => {
 	if (isCommand('Points', message)){
 		var operator = args[1]
 		var name = args[2]
+		var amount = args[3]
 		if(operator == 'add' || operator == 'remove' || operator == 'set'){
 		if(name) {
+		if(IsNum(amount)){
+			
 		
-
-
-			const client = new Client({
+		const client = new Client({
 			connectionString: process.env.DATABASE_URL,
 			ssl: true,
 			});
 
 			client.connect();
 
-			client.query("INSERT INTO points VALUES ('George', '@George', 'guest', 14);", (err, res) => {
+			client.query('INSERT INTO points VALUES ('name', 'amount') ON DUPLICATE KEY UPDATE', (err, res) => {
 			if (err) throw err;
 			for (let row of res.rows) {
 				console.log(JSON.stringify(row));
@@ -59,9 +64,15 @@ Dclient.on('message', (message) => {
 			client.end();
 			});
 		
+		
+		} else{
+		message.reply('try: -Points <set> <Roblox name> <amount>')
+		}
+		} else{
+		message.reply('try: -Points <set> <Roblox name> <amount>')
 		}
 		} else {
-		message.reply('try: -Points <add, remove, set> <Player name or Discord tag>')
+		message.reply('try: -Points <set> <Roblox name> <amount>')
 		}
 	}
 });

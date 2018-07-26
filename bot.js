@@ -6,7 +6,7 @@ var prefix = process.env.PREFIX
 Dclient.login(token)
 
 Dclient.on("ready", () => {
-  Dclient.user.setActivity(`Making HL3`);
+  Dclient.user.setActivity(`Prefix: `+process.env.PREFIX);
   console.log(`Ready to serve on ${Dclient.guilds.size} servers, for ${Dclient.users.size} users.`);
 });
 
@@ -56,7 +56,7 @@ Dclient.on('message', (message) => {
 
 			client.connect();
 
-			client.query('INSERT INTO points VALUES ('name', 'amount') ON DUPLICATE KEY UPDATE'), (err, res) => {
+			client.query('INSERT INTO points VALUES ('+name+', '+amount+') ON DUPLICATE KEY UPDATE'), (err, res) => {
 			if (err) throw err;
 			for (let row of res.rows) {
 				console.log(JSON.stringify(row));

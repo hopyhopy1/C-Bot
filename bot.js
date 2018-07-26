@@ -1,5 +1,5 @@
 var discord = require('discord.js');
-const { Client } = require('pg');
+var Client = require('pg');
 var Dclient = new discord.Client();
 var token = process.env.BOT_TOKEN
 var prefix = process.env.PREFIX

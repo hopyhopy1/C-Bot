@@ -56,7 +56,7 @@ Dclient.on('message', (message) => {
 
 			client.connect();
 
-			client.query('INSERT INTO points VALUES ('name', 'amount') ON DUPLICATE KEY UPDATE', (err, res) => {
+			client.query('INSERT INTO points VALUES ('name', 'amount') ON DUPLICATE KEY UPDATE'), (err, res) => {
 			if (err) throw err;
 			for (let row of res.rows) {
 				console.log(JSON.stringify(row));

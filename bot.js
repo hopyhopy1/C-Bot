@@ -7,7 +7,7 @@ Dclient.login(token)
 
 Dclient.on("ready", () => {
   Dclient.user.setGame(`Making HL3`);
-  console.log(`Ready to serve on ${client.guilds.size} servers, for ${client.users.size} users.`);
+  console.log(`Ready to serve on ${Dclient.guilds.size} servers, for ${Dclient.users.size} users.`);
 });
 
 Dclient.on('guildMemberAdd', member => {

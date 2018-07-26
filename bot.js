@@ -43,7 +43,7 @@ Dclient.on('message', (message) => {
 		if(operator == 'add' || operator == 'remove' || operator == 'set'){
 		if(name) {
 		if(!isNaN(amount)){
-			
+		amount = parseInt(amount, 10);
 		
 		const client = new Client({
 			connectionString: process.env.DATABASE_URL,

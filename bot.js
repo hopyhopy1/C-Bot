@@ -6,7 +6,7 @@ var prefix = process.env.PREFIX
 Dclient.login(token)
 
 Dclient.on("ready", () => {
-  Dclient.user.setGame(`Making HL3`);
+  Dclient.user.setActivity(`Making HL3`);
   console.log(`Ready to serve on ${Dclient.guilds.size} servers, for ${Dclient.users.size} users.`);
 });
 
@@ -45,19 +45,19 @@ Dclient.on('message', (message) => {
 
 
 			const client = new Client({
-			  connectionString: process.env.DATABASE_URL,
- 			 ssl: true,
+			connectionString: process.env.DATABASE_URL,
+			ssl: true,
 			});
 
 			client.connect();
 
-			client.query("INSERT INTO points; VALUES ('george', '@george', 'guest', 0);"), (err, res) => {
-			  if (err) throw err;
-			  for (let row of res.rows) {
-			    console.log(JSON.stringify(row));
-			  }
-			  client.end();
-			};
+			client.query("INSERT INTO points VALUES ('George', '@George', 'guest', 14);", (err, res) => {
+			if (err) throw err;
+			for (let row of res.rows) {
+				console.log(JSON.stringify(row));
+			}
+			client.end();
+			});
 		
 		}
 		} else {

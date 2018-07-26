@@ -28,10 +28,6 @@ function isCommand(command, message){
 	return content.startsWith(prefix + command);
 }
 
-function InNum(string){
-	return !isNaN(string)
-}
-
 Dclient.on('message', (message) => {
 	if (message.author.bot) return; // Dont answer yourself.
     var args = message.content.split(/[ ]+/)
@@ -46,7 +42,7 @@ Dclient.on('message', (message) => {
 		var amount = args[3]
 		if(operator == 'add' || operator == 'remove' || operator == 'set'){
 		if(name) {
-		if(IsNum(amount)){
+		if(!isNaN(amount)){
 			
 		
 		const client = new Client({
